@@ -7,8 +7,7 @@ const Board = () => {
   const [status, setStatus] = useState(utils.DEFAULT_STATUS);
 
   useEffect(() => {
-    const winner = utils.calculateWinner(squares);
-    const status = utils.getNewStatus(winner);
+    const status = getNewStatus();
     setStatus(status);
   }, [squares]);
 
@@ -17,6 +16,20 @@ const Board = () => {
     const icon = utils.getIcon(xIsNext);
     nextSquares[index] = icon;
     setSquares(nextSquares);
+  };
+
+  const getNewStatus = () => {
+    const winner = utils.calculateWinner(squares);
+    if (winner) {
+      return utils.WINNER_PREFIX + winner;
+    }
+
+    const squaresAvailable = squares.some((square) => square === null);
+    if (squaresAvailable) {
+      return utils.STATUS_PREFIX + utils.getIcon(xIsNext);
+    }
+
+    return utils.TIE;
   };
 
   const handleClick = (index) => {

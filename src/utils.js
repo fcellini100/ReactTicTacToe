@@ -15,6 +15,7 @@ export const X_ICON = 'X';
 export const O_ICON = 'O';
 export const STATUS_PREFIX = 'Next player: ';
 export const WINNER_PREFIX = 'Winner: ';
+export const TIE = 'Tie!';
 export const DEFAULT_STATUS = `${STATUS_PREFIX}${X_ICON}`;
 
 export function calculateWinner(squares) {
@@ -29,11 +30,4 @@ export function calculateWinner(squares) {
 
 export function getIcon(xIsNext) {
   return xIsNext ? X_ICON : O_ICON;
-}
-
-export function getNewStatus(winner) {
-  if (winner) {
-    return WINNER_PREFIX + winner;
-  }
-  return STATUS_PREFIX + getIcon();
 }
