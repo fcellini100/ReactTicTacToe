@@ -13,21 +13,22 @@ const Game = () => {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
-    setXIsNext(!xIsNext);
   };
 
-  function jumpTo(nextMove) {
+  const jumpTo = (nextMove) => {
     setCurrentMove(nextMove);
-    setXIsNext(nextMove % 2 === 0);
-  }
+  };
+
+  const getDescription = (moveNumber) => {
+    if (moveNumber > 0) {
+      return utils.GO_TO_MOVE + moveNumber;
+    }
+    return utils.RESTART;
+  };
 
   const moves = history.map((_squares, move) => {
-    let description;
-    if (move > 0) {
-      description = 'Go to move #' + move;
-    } else {
-      description = 'Go to game start';
-    }
+    const description = getDescription(move);
+
     return (
       <li key={move}>
         <button onClick={() => jumpTo(move)}>{description}</button>

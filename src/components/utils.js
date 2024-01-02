@@ -17,6 +17,8 @@ export const STATUS_PREFIX = 'Next player: ';
 export const WINNER_PREFIX = 'Winner: ';
 export const TIE = 'Tie!';
 export const DEFAULT_STATUS = `${STATUS_PREFIX}${X_ICON}`;
+export const RESTART = 'Go to game start';
+export const GO_TO_MOVE = 'Go to move #';
 
 export function calculateWinner(squares) {
   for (let i = 0; i < WINNING_LINES.length; i++) {
