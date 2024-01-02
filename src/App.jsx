@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import * as utils from './utils';
 
 const Board = () => {
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [xIsNext, setXIsNext] = useState(true);
+  const [squares, setSquares] = useState(utils.DEFAULT_SQUARES_VALUE);
+  const [xIsNext, setXIsNext] = useState(utils.DEFAULT_XISNEXT);
   const [status, setStatus] = useState(utils.DEFAULT_STATUS);
 
   useEffect(() => {
@@ -16,7 +16,6 @@ const Board = () => {
     const nextSquares = squares.slice();
     const icon = utils.getIcon(xIsNext);
     nextSquares[index] = icon;
-    setXIsNext(!xIsNext);
     setSquares(nextSquares);
   };
 
@@ -25,8 +24,8 @@ const Board = () => {
     if (squares[index] || winner) {
       return;
     }
-
     updateSquares(index);
+    setXIsNext(!xIsNext);
   };
 
   return (

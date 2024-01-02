@@ -9,6 +9,8 @@ const WINNING_LINES = [
   [2, 4, 6],
 ];
 
+export const DEFAULT_XISNEXT = true;
+export const DEFAULT_SQUARES_VALUE = Array(9).fill(null);
 export const X_ICON = 'X';
 export const O_ICON = 'O';
 export const STATUS_PREFIX = 'Next player: ';
