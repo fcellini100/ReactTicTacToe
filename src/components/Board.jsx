@@ -2,22 +2,13 @@ import { useState, useEffect } from 'react';
 import Square from './Square';
 import * as utils from './utils';
 
-const Board = () => {
-  const [squares, setSquares] = useState(utils.DEFAULT_SQUARES_VALUE);
-  const [xIsNext, setXIsNext] = useState(utils.DEFAULT_XISNEXT);
+const Board = ({ xIsNext, squares, onPlay }) => {
   const [status, setStatus] = useState(utils.DEFAULT_STATUS);
 
   useEffect(() => {
     const status = getNewStatus();
     setStatus(status);
-  }, [squares]);
-
-  const updateSquares = (index) => {
-    const nextSquares = squares.slice();
-    const icon = utils.getIcon(xIsNext);
-    nextSquares[index] = icon;
-    setSquares(nextSquares);
-  };
+  }, [xIsNext]);
 
   const getNewStatus = () => {
     const winner = utils.calculateWinner(squares);
@@ -39,7 +30,13 @@ const Board = () => {
       return;
     }
     updateSquares(index);
-    setXIsNext(!xIsNext);
+  };
+
+  const updateSquares = (index) => {
+    const nextSquares = squares.slice();
+    const icon = utils.getIcon(xIsNext);
+    nextSquares[index] = icon;
+    onPlay(nextSquares);
   };
 
   return (
