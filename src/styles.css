@@ -71,6 +71,10 @@ body {
   width: 34px;
 }
 
+.square:hover {
+  cursor: pointer;
+}
+
 .board-row:after {
   clear: both;
   content: '';
@@ -80,9 +84,11 @@ body {
 .status {
   margin-bottom: 10px;
 }
+
 .game {
   display: flex;
-  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
 }
 
 .game-info {

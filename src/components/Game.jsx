@@ -27,8 +27,16 @@ const Game = () => {
   };
 
   const moves = history.map((_squares, move) => {
-    const description = getDescription(move);
+    if (move === history.length - 1) {
+      const msg = 'You are at move #' + move;
+      return (
+        <span key={move} className="last-move">
+          {msg}
+        </span>
+      );
+    }
 
+    const description = getDescription(move);
     return (
       <li key={move}>
         <button onClick={() => jumpTo(move)}>{description}</button>

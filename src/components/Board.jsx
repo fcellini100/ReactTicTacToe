@@ -21,7 +21,7 @@ const Board = ({ xIsNext, squares, onPlay }) => {
       return utils.STATUS_PREFIX + utils.getIcon(xIsNext);
     }
 
-    return utils.TIE;
+    return utils.DRAW;
   };
 
   const handleClick = (index) => {
